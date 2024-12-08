@@ -86,7 +86,7 @@ const Navbar = () => {
                             })
                         )}
                     >
-                        Admin
+                        Mentors Applications
                     </Link>
                 )}
             </div>
