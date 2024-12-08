@@ -1,42 +1,28 @@
-import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import Image from "next/image";
-import robot from "@/assets/robot.png";
+import About from "./_sections/About";
+import Chatbot from "./_sections/Chatbot";
+import Community from "./_sections/Community";
+import CTA from "./_sections/CTA";
+import Hero from "./_sections/Hero";
+import PopularMentors from "./_sections/PopularMentors";
+import Reviews from "./_sections/Reviews";
 
 const Home = () => {
     return (
         <>
-            <div className="absolute -top-10 -left-10 -z-50">
-                <svg
-                    width="137"
-                    height="258"
-                    viewBox="0 0 137 258"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M110.118 -30.1119C138.566 12.9974 145.722 74.1319 124.364 113.024C103.006 151.916 53.2442 168.064 9.14661 196.146C-34.8958 223.978 -73.2184 263.494 -104.624 256.689C-135.849 250.207 -159.978 197.728 -172.306 152.125C-184.69 106.774 -185.094 68.6228 -180.87 26.5534C-176.465 -15.1923 -167.377 -61.1073 -139.454 -86.4462C-111.767 -111.858 -64.8991 -117.122 -16.5952 -107.212C31.7638 -97.5532 81.6143 -72.9705 110.118 -30.1119Z"
-                        fill="#FD661F"
-                    />
-                </svg>
-            </div>
-
-            <section>
-                <MaxWidthWrapper>
-                    <h1>
-                        Build your own
-                        <br />
-                        road by finding{" "}
-                        <span className="">
-                            <Image
-                                className="animate-bounce w-2/12 inline"
-                                src={robot}
-                                alt="robot"
-                            />
-                        </span>
-                        <br /> your ideal
-                    </h1>
-                </MaxWidthWrapper>
-            </section>
+            <Hero />
+            <About />
+            <PopularMentors />
+            <CTA
+                body="Share your expertise and inspire others by becoming a mentor on Mentoro, where your guidance can shape the future of eager learners."
+                link="Become A Mentor"
+            />
+            <Community />
+            <CTA
+                body='"Request personalized guidance tailored to your specific task or field, and our mentors, individually or in groups, will accept and provide the support you need."'
+                link="Request"
+            />
+            <Reviews />
+            <Chatbot />
         </>
     );
 };
