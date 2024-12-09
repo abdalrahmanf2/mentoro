@@ -21,17 +21,22 @@ import { useState } from "react";
 import { User } from "lucide-react";
 import Image from "next/image";
 import { Textarea } from "./ui/textarea";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "./ui/select";
+import {
+    ACCEPTED_DOC_TYPES,
+    ACCEPTED_IMAGE_TYPES,
+    ACCEPTED_VIDEO_TYPES,
+    CATEGORIES,
+    MAX_FILE_SIZE,
+} from "@/lib/constants";
 
 // Update the schema to handle File type
-const MAX_FILE_SIZE = 24 * 1024 * 1024; // 24MB
-const ACCEPTED_IMAGE_TYPES = [
-    "image/jpeg",
-    "image/jpg",
-    "image/png",
-    "image/webp",
-];
-const ACCEPTED_DOC_TYPES = ["application/pdf"];
-const ACCEPTED_VIDEO_TYPES = ["video/mp4"];
 
 const formSchema = z
     .object({
@@ -64,6 +69,8 @@ const formSchema = z
             .string()
             .min(6, { message: "Confirm password must match password." }),
         location: z.string().min(2, { message: "Location is required" }),
+        jobTitle: z.string().min(2, { message: "Job Title is required" }),
+        category: z.string().min(2, { message: "Category is required" }),
         cv: z
             .instanceof(FileList, { message: "CV is required" })
             .refine((files) => files?.length === 1, "CV is required.")
@@ -86,7 +93,9 @@ const formSchema = z
                 (files) => ACCEPTED_VIDEO_TYPES.includes(files?.[0]?.type),
                 "Only .mp4 format is supported."
             ),
-        additionalInfo: z.string().optional(),
+        about: z.string().optional(),
+        linkedIn: z.string().min(2, { message: "Linkedin is required" }),
+        github: z.string().min(2, { message: "Github is required" }),
     })
     .refine((data) => data.password === data.confirmPassword, {
         message: "Passwords don't match",
@@ -104,8 +113,11 @@ const MentorForm = ({ className }: { className?: string }) => {
             password: "",
             confirmPassword: "",
             location: "",
+            category: "",
             agreeTOS: false,
-            additionalInfo: "",
+            about: "",
+            linkedIn: "",
+            github: "",
         },
     });
 
@@ -280,6 +292,37 @@ const MentorForm = ({ className }: { className?: string }) => {
                     />
                     <FormField
                         control={form.control}
+                        name="category"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Category</FormLabel>
+                                <Select
+                                    onValueChange={field.onChange}
+                                    defaultValue={field.value}
+                                >
+                                    <FormControl>
+                                        <SelectTrigger>
+                                            <SelectValue placeholder="Select a Category" />
+                                        </SelectTrigger>
+                                    </FormControl>
+                                    <SelectContent>
+                                        {CATEGORIES.map((category) => (
+                                            <SelectItem
+                                                key={category.name}
+                                                value={category.name}
+                                            >
+                                                <category.Icon className="inline mb-1 mr-2 size-4" />
+                                                <span>{category.name}</span>
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
                         name="cv"
                         render={({ field: { onChange, value, ...field } }) => (
                             <FormItem>
@@ -335,7 +378,7 @@ const MentorForm = ({ className }: { className?: string }) => {
                     />
                     <FormField
                         control={form.control}
-                        name="additionalInfo"
+                        name="about"
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Additional Info</FormLabel>
@@ -345,6 +388,30 @@ const MentorForm = ({ className }: { className?: string }) => {
                                         className="resize-none"
                                         {...field}
                                     />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="linkedIn"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormControl>
+                                    <Input placeholder="Linkedin" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="github"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormControl>
+                                    <Input placeholder="Github" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>

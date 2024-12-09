@@ -6,8 +6,8 @@ export function middleware(request: NextRequest) {
     const { nextUrl } = request;
     const pathname = nextUrl.pathname;
 
-    const isLoggedIn = true; // Replace with actual auth check
-    const isMentor = false; // Replace with actual role check
+    const isLoggedIn = false;
+    const isMentor = false;
 
     const isAuthRoute = authRoutes.includes(pathname);
     const isPublicRoute = publicRoutes.includes(pathname);

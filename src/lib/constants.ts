@@ -85,3 +85,13 @@ export const COURSES = [
         ],
     },
 ];
+
+export const MAX_FILE_SIZE = 24 * 1024 * 1024; // 24MB
+export const ACCEPTED_IMAGE_TYPES = [
+    "image/jpeg",
+    "image/jpg",
+    "image/png",
+    "image/webp",
+];
+export const ACCEPTED_DOC_TYPES = ["application/pdf"];
+export const ACCEPTED_VIDEO_TYPES = ["video/mp4"];
