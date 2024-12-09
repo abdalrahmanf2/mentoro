@@ -10,13 +10,7 @@ import { useState } from "react";
 
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
-
-interface Mentor {
-    name: string;
-    role: string;
-    skills: string[];
-    pfp: string;
-}
+import { Mentor } from "@/lib/types";
 
 const PopularMentors = () => {
     const [curMentor, setCurMentor] = useState<Mentor>(MENTORS[0]);
@@ -40,7 +34,7 @@ const PopularMentors = () => {
                         <div className="flex flex-col gap-2 justify-center items-center lg:flex-row animate-fade transition-opacity">
                             <div className="flex-1 size-60 rounded-full overflow-hidden">
                                 <Image
-                                    src={curMentor.pfp}
+                                    src={curMentor.picture}
                                     alt="Mentor Image"
                                     width={367}
                                     height={335}
@@ -106,7 +100,7 @@ const PopularMentors = () => {
                                         )}
                                     >
                                         <Image
-                                            src={mentor.pfp}
+                                            src={mentor.picture}
                                             alt="Mentor Image"
                                             width={0}
                                             height={0}

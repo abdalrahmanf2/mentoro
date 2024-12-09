@@ -1,4 +1,6 @@
 "use client";
+import { MENTORS } from "@/lib/constants";
+import { Mentor } from "@/lib/types";
 import { createContext, useState } from "react";
 
 interface AuthContextValues {
@@ -8,15 +10,17 @@ interface AuthContextValues {
 }
 
 interface Session {
-    name: string;
+    id: string;
+    user: Mentor;
     isMentor: boolean;
     isAdmin: boolean;
 }
 
 const defaultAuthInfo = {
     session: {
-        name: "",
-        isMentor: false,
+        id: "1",
+        user: MENTORS[0],
+        isMentor: true,
         isAdmin: false,
     },
     signIn: () => console.log("signed in"),
@@ -27,13 +31,19 @@ export const AuthContext = createContext<AuthContextValues>(defaultAuthInfo);
 
 export const AuthContextProvider = ({ children }: React.PropsWithChildren) => {
     const [session, setSession] = useState<Session | undefined>({
-        name: "Mayar",
-        isMentor: false,
+        id: "1",
+        user: MENTORS[0],
+        isMentor: true,
         isAdmin: true,
     });
 
     const signIn = () => {
-        setSession({ name: "Mayar", isMentor: true, isAdmin: false });
+        setSession({
+            id: "1",
+            user: MENTORS[0],
+            isMentor: true,
+            isAdmin: false,
+        });
     };
 
     const signOut = () => {

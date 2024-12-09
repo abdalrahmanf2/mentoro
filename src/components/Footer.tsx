@@ -10,7 +10,6 @@ import {
     Mail,
     PhoneCall,
     Twitter,
-    X,
 } from "lucide-react";
 
 const Footer = () => {

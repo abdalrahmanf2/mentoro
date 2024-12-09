@@ -21,7 +21,7 @@ const Admin = () => {
                             >
                                 <div className="size-32 rounded-full overflow-hidden">
                                     <Image
-                                        src={mentor.pfp}
+                                        src={mentor.picture}
                                         width={0}
                                         height={0}
                                         sizes="100vw"

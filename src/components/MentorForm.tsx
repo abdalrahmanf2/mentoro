@@ -284,6 +284,7 @@ const MentorForm = ({ className }: { className?: string }) => {
                         render={({ field: { onChange, value, ...field } }) => (
                             <FormItem>
                                 <FormLabel className="">
+                                    {value && ""}
                                     Upload your CV
                                 </FormLabel>
                                 <FormControl>
@@ -311,6 +312,7 @@ const MentorForm = ({ className }: { className?: string }) => {
                             <FormItem>
                                 <FormLabel className="">Upload Video</FormLabel>
                                 <FormControl>
+                                    {value && ""}
                                     <Input
                                         type="file"
                                         accept={ACCEPTED_VIDEO_TYPES.join(",")}

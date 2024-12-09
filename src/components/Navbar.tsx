@@ -11,7 +11,6 @@ const inter = Inter({ subsets: ["latin"], weight: ["600"] });
 const Navbar = () => {
     const curPath = usePathname();
     const { session } = useAuth();
-    console.log(session);
 
     return (
         <header className="grid justify-center gap-4 md:grid-cols-3 py-8 md:px-16">
@@ -25,7 +24,7 @@ const Navbar = () => {
                     href="/"
                     className={cn(
                         "rounded-2xl -m-px px-4 py-1 text-sm md:text-lg text-brand-200 transition",
-                        curPath === "/"
+                        curPath === "/" || curPath === "/auth"
                             ? "rounded-2xl text-black bg-brand-100 hover:opacity-85"
                             : "text-brand-200 hover:bg-brand-100/25 hover:text-black"
                     )}

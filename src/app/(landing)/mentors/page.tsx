@@ -29,7 +29,7 @@ const Mentors = () => {
                     </div>
                     <div
                         className={cn(
-                            "w-full flex [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [animation-duration:30s]"
+                            "w-full overflow-hidden flex [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [animation-duration:30s]"
                         )}
                     >
                         <div className="flex flex-none gap-6 py-0.5 pr-6 animate-move-left [animation-duration:30s]">
@@ -49,7 +49,7 @@ const Mentors = () => {
                     </div>
                     <div
                         className={cn(
-                            "w-full flex [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] "
+                            "w-full overflow-hidden flex [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] "
                         )}
                     >
                         <div className="flex flex-none gap-6 py-0.5 pr-6 animate-move-right [animation-duration:40s]">
@@ -87,7 +87,7 @@ const Mentors = () => {
                                 >
                                     <div className="size-32 rounded-full overflow-hidden">
                                         <Image
-                                            src={mentor.pfp}
+                                            src={mentor.picture}
                                             width={0}
                                             height={0}
                                             sizes="100vw"

@@ -9,17 +9,10 @@ import { useState } from "react";
 import RegisterForm from "@/components/RegisterForm";
 import { cn } from "@/lib/utils";
 import MentorForm from "@/components/MentorForm";
-import useAuth from "@/hooks/useAuth";
-import NotFound from "../not-found";
 
 const Auth = () => {
-    const { session } = useAuth();
     const [isLogin, setIsLogin] = useState(true);
     const [isMentor, setIsMentor] = useState(false);
-
-    if (session) {
-        return NotFound();
-    }
 
     const switchPanels = () => {
         setIsLogin((prev) => !prev);
