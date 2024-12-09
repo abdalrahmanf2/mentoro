@@ -13,27 +13,29 @@ const Mentors = () => {
     return (
         <>
             <section className="py-16 ">
-                <MaxWidthWrapper className="flex flex-col gap-4 justify-center items-center">
-                    <SearchBar />
-                    <div className="flex items-center gap-4">
-                        <h2 className="text-7xl text-brand-200 font-extrabold text-shadow-md">
-                            Categories
-                        </h2>
-                        <div className="animate-float size-32">
-                            <Image
-                                className="size-full object-contain"
-                                src={robot}
-                                alt="Robot"
-                            />
+                <div className="flex flex-col gap-4 justify-center items-center">
+                    <MaxWidthWrapper className="flex flex-col gap-4 justify-center items-center">
+                        <SearchBar />
+                        <div className="flex items-center gap-4">
+                            <h2 className="text-7xl text-brand-200 font-extrabold text-shadow-md">
+                                Categories
+                            </h2>
+                            <div className="animate-float size-32">
+                                <Image
+                                    className="size-full object-contain"
+                                    src={robot}
+                                    alt="Robot"
+                                />
+                            </div>
                         </div>
-                    </div>
+                    </MaxWidthWrapper>
                     <div
                         className={cn(
                             "w-full overflow-hidden flex [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [animation-duration:30s]"
                         )}
                     >
                         <div className="flex flex-none gap-6 py-0.5 pr-6 animate-move-left [animation-duration:30s]">
-                            {[...new Array(4)].fill(0).map((_, idx) => (
+                            {[...new Array(6)].fill(0).map((_, idx) => (
                                 <Fragment key={idx}>
                                     {CATEGORIES.map((category) => (
                                         <div
@@ -53,7 +55,7 @@ const Mentors = () => {
                         )}
                     >
                         <div className="flex flex-none gap-6 py-0.5 pr-6 animate-move-right [animation-duration:40s]">
-                            {[...new Array(4)].fill(0).map((_, idx) => (
+                            {[...new Array(6)].fill(0).map((_, idx) => (
                                 <Fragment key={idx}>
                                     {CATEGORIES.map((category) => (
                                         <div
@@ -67,7 +69,7 @@ const Mentors = () => {
                             ))}
                         </div>
                     </div>
-                </MaxWidthWrapper>
+                </div>
             </section>
 
             <section className="py-16">

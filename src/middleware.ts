@@ -7,7 +7,7 @@ export function middleware(request: NextRequest) {
     const pathname = nextUrl.pathname;
 
     const isLoggedIn = true; // Replace with actual auth check
-    const isMentor = true; // Replace with actual role check
+    const isMentor = false; // Replace with actual role check
 
     const isAuthRoute = authRoutes.includes(pathname);
     const isPublicRoute = publicRoutes.includes(pathname);
@@ -21,14 +21,19 @@ export function middleware(request: NextRequest) {
         return NextResponse.redirect(new URL("/mentor-dashboard", request.url));
     }
 
-    // Case 2: Logged-in user trying to access auth pages (login, register)
+    // Case 2: A user trying to access mentor-dashboard pages
+    if (!isMentor && pathname.startsWith("/mentor-dashboard")) {
+        return NextResponse.redirect(new URL("/", request.url));
+    }
+
+    // Case 3: Logged-in user trying to access auth pages (login, register)
     if (isLoggedIn && isAuthRoute) {
         return NextResponse.redirect(new URL("/", request.url));
     }
 
-    // Case 3: Non-logged-in user trying to access protected routes
+    // Case 4: Non-logged-in user trying to access protected routes
     if (!isLoggedIn && !isPublicRoute && !isAuthRoute) {
-        return NextResponse.redirect(new URL("/login", request.url));
+        return NextResponse.redirect(new URL("/auth", request.url));
     }
 
     // Allow all other requests to proceed

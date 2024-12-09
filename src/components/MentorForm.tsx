@@ -37,7 +37,7 @@ const formSchema = z
     .object({
         picture: z
             .instanceof(FileList, { message: "Picture is required" })
-            .refine((files) => files?.length === 1, "Image is required.")
+            .refine((files) => files?.length === 1, "Picture is required.")
             .refine(
                 (files) => files?.[0]?.size <= MAX_FILE_SIZE,
                 "Max file size is 23MB."
@@ -284,9 +284,9 @@ const MentorForm = ({ className }: { className?: string }) => {
                         render={({ field: { onChange, value, ...field } }) => (
                             <FormItem>
                                 <FormLabel className="">
-                                    {value && ""}
                                     Upload your CV
                                 </FormLabel>
+                                {value && false}
                                 <FormControl>
                                     <Input
                                         type="file"
@@ -311,8 +311,8 @@ const MentorForm = ({ className }: { className?: string }) => {
                         render={({ field: { onChange, value, ...field } }) => (
                             <FormItem>
                                 <FormLabel className="">Upload Video</FormLabel>
+                                {value && false}
                                 <FormControl>
-                                    {value && ""}
                                     <Input
                                         type="file"
                                         accept={ACCEPTED_VIDEO_TYPES.join(",")}
