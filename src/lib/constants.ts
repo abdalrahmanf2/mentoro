@@ -1,25 +1,28 @@
 import { Box, CodeXml, Database, Laptop, Waypoints } from "lucide-react";
+import ahmedImg from "@/assets/mentors/ahmed-mohammed.png";
+import jayaImg from "@/assets/mentors/jaya-wills.png";
+import johnImg from "@/assets/mentors/john-doe.png";
 
 export const MENTORS = [
     {
         name: "Jaya Wills",
         role: "Backend Developer",
         skills: ["C#", "ASP.NET", "OOP", "Data Structures"],
-        picture: "/assets/mentors/jaya-wills.png",
+        picture: jayaImg,
         location: "Alexandria, Egypt",
     },
     {
         name: "Ahmed Mohammed",
         role: "Frontend Developer",
         skills: ["C#", "ASP.NET", "OOP", "Data Structures"],
-        picture: "/assets/mentors/ahmed-mohammed.png",
+        picture: ahmedImg,
         location: "Alexandria, Egypt",
     },
     {
         name: "John Doe",
         role: "Figma Designer",
         skills: ["C#", "ASP.NET", "OOP", "Data Structures"],
-        picture: "/assets/mentors/john-doe.png",
+        picture: johnImg,
         location: "Alexandria, Egypt",
     },
 ];

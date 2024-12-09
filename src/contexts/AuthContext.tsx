@@ -20,8 +20,8 @@ const defaultAuthInfo = {
     session: {
         id: "1",
         user: MENTORS[0],
-        isMentor: false,
-        isAdmin: false,
+        isMentor: true,
+        isAdmin: true,
     },
     signIn: () => console.log("signed in"),
     signOut: () => console.log("signed out"),
@@ -30,7 +30,9 @@ const defaultAuthInfo = {
 export const AuthContext = createContext<AuthContextValues>(defaultAuthInfo);
 
 export const AuthContextProvider = ({ children }: React.PropsWithChildren) => {
-    const [session, setSession] = useState<Session | undefined>(undefined);
+    const [session, setSession] = useState<Session | undefined>(
+        defaultAuthInfo.session
+    );
 
     const signIn = () => {
         setSession(defaultAuthInfo.session);

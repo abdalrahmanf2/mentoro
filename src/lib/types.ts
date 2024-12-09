@@ -1,8 +1,10 @@
+import { StaticImageData } from "next/image";
+
 export interface Mentor {
     name: string;
     role: string;
     skills: string[];
-    picture: string;
+    picture: StaticImageData;
     location: string;
 }
 

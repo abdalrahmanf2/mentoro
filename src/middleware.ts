@@ -6,8 +6,9 @@ export function middleware(request: NextRequest) {
     const { nextUrl } = request;
     const pathname = nextUrl.pathname;
 
-    const isLoggedIn = false;
-    const isMentor = false;
+    const isLoggedIn = true;
+    const isMentor = true;
+    const isAdmin = false;
 
     const isAuthRoute = authRoutes.includes(pathname);
     const isPublicRoute = publicRoutes.includes(pathname);
@@ -34,6 +35,15 @@ export function middleware(request: NextRequest) {
     // Case 4: Non-logged-in user trying to access protected routes
     if (!isLoggedIn && !isPublicRoute && !isAuthRoute) {
         return NextResponse.redirect(new URL("/auth", request.url));
+    }
+
+    // Case 5: Non-Admin user trying to access admin routes
+    if (
+        !isAdmin &&
+        !isPublicRoute &&
+        !pathname.startsWith("/mentor-dashboard")
+    ) {
+        return NextResponse.redirect(new URL("/", request.url));
     }
 
     // Allow all other requests to proceed

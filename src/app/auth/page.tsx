@@ -48,8 +48,8 @@ const Auth = () => {
                         <div className="py-8 lg:py-16 h-full flex flex-col gap-4 lg:gap-8 justify-center items-center">
                             <h2 className="text-shadow-sm text-white text-4xl lg:text-6xl max-w-72 text-center font-extrabold">
                                 {isLogin
-                                    ? "Start your journey"
-                                    : "Welcome back!"}
+                                    ? "Welcome back!"
+                                    : "Start your journey"}
                             </h2>
                             <div className="size-32 lg:size-48 animate-float overflow-hidden">
                                 <Image

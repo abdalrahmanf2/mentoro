@@ -1,13 +1,17 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
+import firstNodeImg from "@/assets/community/1.jpg";
+import secNodeImg from "@/assets/community/2.jpg";
+import thirdNodeImg from "@/assets/community/3.jpg";
+import fourthNodeImg from "@/assets/community/4.png";
 
 interface Node {
     id: string;
     label?: string;
-    img?: string;
+    img?: StaticImageData;
     width?: string;
     left: string;
     top: string;
@@ -22,13 +26,13 @@ const NODES: Node[] = [
     },
     {
         id: "person-1",
-        img: "/assets/community/1.jpg",
+        img: firstNodeImg,
         left: "85%",
         top: "10%",
     },
     {
         id: "person-2",
-        img: "/assets/community/2.jpg",
+        img: secNodeImg,
         left: "15%",
         top: "50%",
     },
@@ -46,13 +50,13 @@ const NODES: Node[] = [
     },
     {
         id: "person-4",
-        img: "/assets/community/4.png",
+        img: fourthNodeImg,
         left: "40%",
         top: "100%",
     },
     {
         id: "person-3",
-        img: "/assets/community/3.jpg",
+        img: thirdNodeImg,
         left: "75%",
         top: "80%",
     },
