@@ -11,9 +11,9 @@ import FilterOnRole from "./FilterOnRole";
 const CATEGORIES = ["Data Structures", "ASP.NET API", "OOP", "Problem Solving"];
 
 const Mentors = () => {
-  const [curRole, setCurRole] = useState("");
+  const [curRole, setCurRole] = useState("All");
   const filteredMentors =
-    curRole === ""
+    curRole === "All"
       ? MENTORS
       : MENTORS.filter((mentor) => mentor.role === curRole);
 

@@ -19,6 +19,7 @@ const FilterOnRole = ({
         <SelectValue placeholder="Category" />
       </SelectTrigger>
       <SelectContent>
+        <SelectItem value="All">All</SelectItem>
         {ROLES.map((role, idx) => (
           <SelectItem key={idx} value={role}>
             {role}
